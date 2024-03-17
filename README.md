@@ -55,8 +55,7 @@ This is a single-player card game built using React and Redux, based on the popu
 - HTML
 - CSS
 
-## Acknowledgements
-- This project was inspired by the card game "Exploding Kittens" created by Elan Lee, Matthew Inman, and Shane Small.
+
 
 ## Author
 - [naseeb-shah]
