@@ -52,6 +52,7 @@ const App = () => {
         height="100vh"
         justifyContent="center"
         alignItems="center"
+        marginTop={0}
       >
         <Stack
           flexDir="column"

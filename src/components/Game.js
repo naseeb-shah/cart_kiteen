@@ -1,7 +1,7 @@
 
 import { useDispatch,useSelector } from 'react-redux';
 import Card from './card';
-import { HStack,Text } from '@chakra-ui/react';
+import { Button, HStack,Text } from '@chakra-ui/react';
 import NavBar from './navbar';
 import { useState } from 'react';
 
@@ -38,6 +38,10 @@ const dispatch= useDispatch()
 
         <>
         <NavBar />
+        <Button alignSelf="center" textAlign="center" display="block" mx="auto" onClick={()=>dispatch(Shuffle(0)) } mb={20}>
+  RESTART
+</Button>
+
        { win?
              <Text
              textAlign="center"
@@ -62,7 +66,7 @@ const dispatch= useDispatch()
             YOU LOSS
            </Text>:null
         }
-            <HStack>
+            <HStack alignItems={'center'} justifyContent={'center'}>
         
         {
 store.map((e,index)=><Card value={e.name.toUpperCase()} key={e.name+index+e.show+e.id} id={e.id}handleClick={handleClick} show={false} icon={e.icon} />)
