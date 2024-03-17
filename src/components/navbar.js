@@ -17,18 +17,19 @@ import {
   Button,
   Heading,
 } from '@chakra-ui/react';
+import { useAuth } from '../auth';
 
 
 
 const NavBar = () => {
  
-
+const{user}=useAuth()
 
  
   return (
-    <Flex p={4} bg="teal.500" color="white" mb={50} justifyContent={'center'}>
+    <Flex p={4} bg="teal.500" color="white" mb={30} justifyContent={'center'}>
       
-<Heading> Welcome at  GameZone</Heading>
+<Heading> Welcome {user?user.name:'at  GameZone'}</Heading>
     </Flex>
   );
 };

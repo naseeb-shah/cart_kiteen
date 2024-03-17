@@ -9,6 +9,7 @@ import { store } from './redux/store';
 import { Game}  from './components/Game';
 import User from "./components/UsernameForm"
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
+import Registration from './components/singup';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
      <Routes>
       <Route index Component={user?Game:User}/>
       <Route path='/login' Component={User}/>
+      <Route path='/reg' Component={Registration}/>
      </Routes>
     </BrowserRouter>  
   

@@ -14,37 +14,42 @@ import {
   FormControl,
   FormHelperText,
   InputRightElement,
-  Toast,useToast
+  useToast
 } from "@chakra-ui/react";
 import { FaUserAlt, FaLock } from "react-icons/fa";
 import NavBar from "./navbar";
 import { useAuth } from "../auth";
 import { useNavigate } from "react-router-dom";
+
 const CFaUserAlt = chakra(FaUserAlt);
 const CFaLock = chakra(FaLock);
 
-const App = () => {
-  const toast = useToast()
-const navigate= useNavigate()
-  const { login } = useAuth();
+const Registration = () => {
+  const toast = useToast();
+
+  const { register } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
   const [pass, setPass] = useState("");
   const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+const navigate=useNavigate()
   const handleShowClick = () => setShowPassword(!showPassword);
-  const handlelog = () => {
-    if (email.length && pass.length) {
-      login(email,  pass);
-      navigate('/')
-    }else{
+  const handleRegister = () => {
+    if (email.length && pass.length && username.length) {
+      register(email,  username,pass);
+      navigate('/login')
+
+    } else {
       toast({
-        title: 'Invalid Input',
+        title: "Invalid Input",
         description: "",
-        status: 'warning',
+        status: "warning",
         duration: 9000,
         isClosable: true,
-      })
+      });
     }
   };
+
   return (
     <>
       <NavBar />
@@ -63,7 +68,7 @@ const navigate= useNavigate()
           alignItems="center"
         >
           <Avatar bg="teal.500" />
-          <Heading color="teal.400">Welcome Kitten</Heading>
+          <Heading color="teal.400">Create an Account</Heading>
           <Box minW={{ base: "90%", md: "468px" }}>
             
               <Stack
@@ -79,9 +84,23 @@ const navigate= useNavigate()
                       children={<CFaUserAlt color="gray.300" />}
                     />
                     <Input
+                      type="text"
+                      value={username}
+                      placeholder="Username"
+                      onChange={(e) => setUsername(e.target.value)}
+                    />
+                  </InputGroup>
+                </FormControl>
+                <FormControl>
+                  <InputGroup>
+                    <InputLeftElement
+                      pointerEvents="none"
+                      children={<CFaUserAlt color="gray.300" />}
+                    />
+                    <Input
                       type="email"
                       value={email}
-                      placeholder="email address"
+                      placeholder="Email address"
                       onChange={(e) => setEmail(e.target.value)}
                     />
                   </InputGroup>
@@ -104,9 +123,6 @@ const navigate= useNavigate()
                       </Button>
                     </InputRightElement>
                   </InputGroup>
-                  <FormHelperText textAlign="right">
-                    <Link>forgot password?</Link>
-                  </FormHelperText>
                 </FormControl>
                 <Button
                   borderRadius={0}
@@ -114,18 +130,18 @@ const navigate= useNavigate()
                   variant="solid"
                   colorScheme="teal"
                   width="full"
-                  onClick={handlelog}
+                  onClick={handleRegister}
                 >
-                  Login
+                  Register
                 </Button>
               </Stack>
             
           </Box>
         </Stack>
         <Box>
-          New to us?{" "}
+          Already have an account?{" "}
           <Link color="teal.500" href="#">
-            Sign Up
+            Log In
           </Link>
         </Box>
       </Flex>
@@ -133,4 +149,4 @@ const navigate= useNavigate()
   );
 };
 
-export default App;
+export default Registration;
