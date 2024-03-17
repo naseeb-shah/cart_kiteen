@@ -3,6 +3,9 @@
 
 ## Introduction
 This is a single-player card game built using React and Redux, based on the popular card game "Exploding Kittens". The objective of the game is to draw cards from the deck, avoiding the exploding kitten card, and successfully draw all other cards to win.
+![Alt Text](x.png)
+![Alt Text](y.png)
+![Alt Text](z.png)
 
 ## Features
 - Start the game with a deck of 5 cards.

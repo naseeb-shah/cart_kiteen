@@ -66,7 +66,7 @@ export const GameReducer=(state=initialState,action)=>{
             }else{
                 return {
                     ...state,
-                    cards:[],
+                    cards:state.cards,
                     loss:true,
                     win:false
                 }

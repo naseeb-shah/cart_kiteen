@@ -50,7 +50,7 @@ const dispatch= useDispatch()
               bgClip="text"
             >{"CLICK ON CARD TO PLAY"}</Text>
 
-       { win?
+       { win||store.length==0?
              <Text
              textAlign="center"
              fontSize="200"
@@ -74,13 +74,13 @@ const dispatch= useDispatch()
             YOU LOSS
            </Text>:null
         }
-            <HStack alignItems={'center'} justifyContent={'center'}>
+          { !win&&!loss? <HStack alignItems={'center'} justifyContent={'center'}>
         
         {
 store.map((e,index)=><Card value={e.name.toUpperCase()} key={e.name+index+e.show+e.id} id={e.id}handleClick={handleClick} show={false} icon={e.icon} />)
 
 }
-</HStack>
+</HStack>:null}
 
 </>
         )
