@@ -11,7 +11,8 @@ const shuffleCards = () => {
       let shuffledCards=[]
       for(let i =0;i<5;i++){
           const randomNumber = Math.floor(Math.random() * 4);
-        shuffledCards.push({...cards[randomNumber],id:cards[randomNumber].name+i})
+          let timeStamp= +new Date().getMilliseconds()
+        shuffledCards.push({...cards[randomNumber],id:cards[randomNumber].name+i+timeStamp})
     }
 
     return shuffledCards;
@@ -41,7 +42,9 @@ export const GameReducer=(state=initialState,action)=>{
             }
         }
         case 'shuffle':{
-            return initialState
+            return{
+                ...initialState,cards:shuffleCards()
+            }
         }
         case 'defuse':{
             if(state.cards.length==0){

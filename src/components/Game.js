@@ -41,6 +41,14 @@ const dispatch= useDispatch()
         <Button alignSelf="center" textAlign="center" display="block" mx="auto" onClick={()=>dispatch(Shuffle(0)) } mb={20}>
   RESTART
 </Button>
+<Text
+              textAlign="center"
+              
+              fontWeight="bold"
+              backgroundImage='linear-gradient(to bottom right, #87CEEB, #feb47b)'
+              color="transparent"
+              bgClip="text"
+            >{"CLICK ON CARD TO PLAY"}</Text>
 
        { win?
              <Text
