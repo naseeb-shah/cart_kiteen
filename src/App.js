@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
+
+
+import React from 'react';
+import { Provider } from 'react-redux';
+import   Card  from './components/card';
+import { useAuth} from './auth';
+import { store } from './redux/store';
+import { Game}  from './components/Game';
+import User from "./components/UsernameForm"
+import { BrowserRouter,Routes,Route } from 'react-router-dom';
+
 
 function App() {
+  const {user}=useAuth()
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    
+    <Provider store={store}>  
+    <BrowserRouter>
+     <Routes>
+      <Route index Component={user?Game:User}/>
+      <Route path='/login' Component={User}/>
+     </Routes>
+    </BrowserRouter>  
+  
+    </Provider>
+    
+
   );
 }
 
